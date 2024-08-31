@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import Map from './component/Map';
+import mobilePattern from './assets/images/pattern-bg-mobile.png';
+import desktopPattern from './assets/images/pattern-bg-desktop.png';
+import arrow from './assets/images/icon-arrow.svg';
 
 function App() {
   const [ipAddress, setIpAddress] = useState('');
@@ -49,11 +52,7 @@ function App() {
     <div className="w-full min-h-screen bg-gray-500 relative">
       <div>
         <img
-          src={
-            isMobile
-              ? '/src/assets/images/pattern-bg-mobile.png'
-              : '/src/assets/images/pattern-bg-desktop.png'
-          }
+          src={isMobile ? mobilePattern : desktopPattern}
           alt="Background pattern"
           className="w-full relative"
         />
@@ -75,7 +74,7 @@ function App() {
             className="text-white absolute end-0 bottom-0 bg-VeryDarkGray hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-xl text-sm px-4 py-5"
             onClick={() => fetchIPDetails()}
           >
-            <img src="/src/assets/images/icon-arrow.svg" alt="Search" />
+            <img src={arrow} alt="Search" />
           </button>
         </div>
         {isFetched && Location.location && (
